@@ -1,0 +1,48 @@
+import java.util.Objects;
+
+public class Bird extends Animal{
+    private String livingEnvironment;
+
+    public Bird(String name, int age, String type, String clas, String livingEnvironment) {
+        super(name, age, type, clas);
+        this.livingEnvironment = livingEnvironment;
+    }
+
+    public String getLivingEnvironment() {
+        return livingEnvironment;
+    }
+
+    public void setLivingEnvironment(String livingEnvironment) {
+        if (livingEnvironment != null && !livingEnvironment.isEmpty() && !livingEnvironment.isBlank()) {
+            this.livingEnvironment = livingEnvironment;
+        }
+    }
+
+    @Override
+    public void eat() {
+
+    }
+
+    @Override
+    public void go() {
+        System.out.println("Охотиться");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Bird bird = (Bird) o;
+        return livingEnvironment.equals(bird.livingEnvironment);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), livingEnvironment);
+    }
+
+    public String toString() {
+        return super.toString() + "Среда проживания: " + livingEnvironment;
+    }
+}
